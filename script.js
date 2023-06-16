@@ -17,7 +17,7 @@ document.getElementById('characterForm').addEventListener('submit', async (event
     }
 
     // Send data to server
-    const response = await fetch('http://localhost:3000/submit', {
+    await fetch('http://localhost:3000/submit', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -28,6 +28,24 @@ document.getElementById('characterForm').addEventListener('submit', async (event
             usefulAttributes,
             uselessAttributes,
         }),
+    });
+
+    // Clear form for next character sheet
+    for (let i = 0; i < 5; i++) {
+        document.getElementById('usefulCharacter' + i).value = '';
+        document.getElementById('uselessCharacter' + i).value = '';
+        document.getElementById('usefulAttribute' + i).value = '';
+        document.getElementById('uselessAttribute' + i).value = '';
+    }
+});
+
+//When the "Submit All" button is clicked
+document.getElementById('submitAll').addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    // Send "submit all" request to server
+    const response = await fetch('http://localhost:3000/submitAll', {
+        method: 'POST',
     });
 
     // Update characterDisplay and characterSelection with response
