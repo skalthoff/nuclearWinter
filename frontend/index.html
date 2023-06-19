@@ -1,68 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Thought Experiment Game</title>
+    <title>Nuclear Winter Aid</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico" 
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
-    <h1>Thought Experiment Game</h1>
-
-    <form id="characterForm">
-        <h2>Useful Characters</h2>
-        <div id="usefulCharacters">
-            <!-- Repeat this input field 5 times -->
-            <input type="text" id="usefulCharacter0">
-            <input type="text" id="usefulCharacter1">
-            <input type="text" id="usefulCharacter2">
-            <input type="text" id="usefulCharacter3">
-            <input type="text" id="usefulCharacter4">
-        </div>
-
-        <h2>Useless Characters</h2>
-        <div id="uselessCharacters">
-            <!-- Repeat this input field 5 times -->
-            <input type="text" id="uselessCharacter0">
-            <input type="text" id="uselessCharacter1">
-            <input type="text" id="uselessCharacter2">
-            <input type="text" id="uselessCharacter3">
-            <input type="text" id="uselessCharacter4">
-        </div>
-
-        <h2>Useful Attributes</h2>
-        <div id="usefulAttributes">
-            <!-- Repeat this input field 5 times -->
-            <input type="text" id="usefulAttribute0">
-            <input type="text" id="usefulAttribute1">
-            <input type="text" id="usefulAttribute2">
-            <input type="text" id="usefulAttribute3">
-            <input type="text" id="usefulAttribute4">
-        </div>
-
-        <h2>Useless Attributes</h2>
-        <div id="uselessAttributes">
-            <!-- Repeat this input field 5 times -->
-            <input type="text" id="uselessAttribute0">
-            <input type="text" id="uselessAttribute1">
-            <input type="text" id="uselessAttribute2">
-            <input type="text" id="uselessAttribute3">
-            <input type="text" id="uselessAttribute4">
-        </div>
-
-        <input type="submit" value="Submit">
+    <main>
+        <header>
+            <h1>Nuclear Winter</h1>
+        </header>
         
-    </form>
-    <button id="clearBackend">Clear Backend</button>
-    <button id="submitAll">Submit All</button>
-    <h2>Character List</h2>
-    <div id="characterDisplay"></div>
+        <section id="formSection">
+            <form id="characterForm">
+                <div class="inputGroup">
+                    <h2>Useful Characters</h2>
+                    <div id="usefulCharacters" class="inputFields"></div>
+                </div>
 
-    <h2>Select Characters</h2>
-    <form id="characterSelection">
-        <!-- Checkbox list of characters will be populated here -->
-    </form>
-    <button id="submitSelection">Submit Selection</button>
+                <div class="inputGroup">
+                    <h2>Useless Characters</h2>
+                    <div id="uselessCharacters" class="inputFields"></div>
+                </div>
+
+                <div class="inputGroup">
+                    <h2>Useful Attributes</h2>
+                    <div id="usefulAttributes" class="inputFields"></div>
+                </div>
+
+                <div class="inputGroup">
+                    <h2>Useless Attributes</h2>
+                    <div id="uselessAttributes" class="inputFields"></div>
+                </div>
+
+                <div class="buttons">
+                    <input type="submit" value="Submit">
+                    <button id="clearBackend">Clear Backend</button>
+                    <button id="submitAll">Submit All</button>
+                </div>
+            </form>
+        </section>
+        
+        <section id="characterList">
+            <h2>Character List</h2>
+            <div id="characterDisplay"></div>
+        </section>
+    </main>
     
     <script src="script.js"></script>
 </body>

@@ -1,27 +1,68 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 100px;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f6f6f6;
+}
+
+main {
+    margin: 2em auto;
+    width: 80%;
+    max-width: 800px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2em;
 }
 
 h1, h2 {
     color: #333;
 }
 
-form {
+h2 {
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+.inputGroup {
     margin-bottom: 2em;
 }
 
-input[type=text] {
+.inputFields input[type=text] {
     display: block;
     margin-bottom: 1em;
     padding: 0.5em;
     font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 input[type=submit], button {
     padding: 0.5em 1em;
     font-size: 1em;
     cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background-color: #333;
+}
+
+#characterList, #characterSelectionSection {
+    margin-top: 2em;
+    border: 1px solid #ccc;
+    padding: 2em;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#characterSelectionSection button {
+    display: block;
+    margin-top: 1em;
 }
