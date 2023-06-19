@@ -11,8 +11,9 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Store all character sheets in memory
+// Store all character sheets and combinations in memory
 let characterSheets = [];
+let characterAttributePairs = [];
 
 // Handle POST requests to /submit
 app.post('/submit', (req, res) => {
@@ -33,26 +34,35 @@ app.post('/submit', (req, res) => {
 
 // Handle POST requests to /submitAll
 app.post('/submitAll', (req, res) => {
-    // Combine all characters and attributes from all character sheets
-    let allCharacters = [];
-    let allAttributes = [];
-    characterSheets.forEach(sheet => {
-        allCharacters = allCharacters.concat(sheet.usefulCharacters, sheet.uselessCharacters);
-        allAttributes = allAttributes.concat(sheet.usefulAttributes, sheet.uselessAttributes);
-    });
+    // If characterAttributePairs is empty, generate combinations
+    if (characterAttributePairs.length === 0) {
+        // Combine all characters and attributes from all character sheets
+        let allCharacters = [];
+        let allAttributes = [];
+        characterSheets.forEach(sheet => {
+            allCharacters = allCharacters.concat(sheet.usefulCharacters, sheet.uselessCharacters);
+            allAttributes = allAttributes.concat(sheet.usefulAttributes, sheet.uselessAttributes);
+        });
 
-    // Shuffle and pair up characters and attributes
-    const pairs = pairCharacters(allCharacters, allAttributes);
-
-    // Clear characterSheets for next game
-    characterSheets = [];
+        // Shuffle and pair up characters and attributes
+        characterAttributePairs = pairCharacters(allCharacters, allAttributes);
+    }
 
     // Send response back
-    res.json(pairs);
+    res.json(characterAttributePairs);
+});
+
+// Handle POST requests to /clear
+app.post('/clear', (req, res) => {
+    // Clear characterSheets and characterAttributePairs for next game
+    characterSheets = [];
+    characterAttributePairs = [];
+
+    // Send response back
+    res.json({ message: 'Character sheets and character-attribute pairs cleared successfully.' });
 });
 
 // The rest of your server.js file remains the same
-
 
 // Function to pair characters and attributes
 function pairCharacters(characters, attributes) {
