@@ -1,6 +1,7 @@
 // Import express and cors
 const express = require('express');
 const cors = require('cors');
+const path = require('path')
 
 // Create a new express application
 const app = express();
@@ -10,6 +11,10 @@ app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+// Middleware to serve static files
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 
 // Store all character sheets and combinations in memory
 let characterSheets = [];
